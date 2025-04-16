@@ -23,11 +23,6 @@ BuildRequires:  gcc
 BuildRequires:  pkg-config
 BuildRequires:  sed
 
-%description
-An Open Source implementation of Audio Processing Technology codec (aptX)
-originally derived from ffmpeg 4.0 project and licensed under LGPLv2.1+. This codec
-is mainly used in Bluetooth A2DP profile.
-
 %package tools
 Summary:    An implementation of Audio Processing Technology codec (aptX)
 
@@ -38,15 +33,10 @@ is mainly used in Bluetooth A2DP profile.
 
 This package contains the encoder and decoder tool.
 
-%package -n libfreeaptx0
-Summary:    An implementation of Audio Processing Technology codec (aptX)
-
-%description -n libfreeaptx0
+%description
 An Open Source implementation of Audio Processing Technology codec (aptX)
 originally derived from ffmpeg 4.0 project and licensed under LGPLv2.1+. This codec
 is mainly used in Bluetooth A2DP profile.
-
-This package contains the shared library
 
 %package devel
 Summary:    An implementation of Audio Processing Technology codec (aptX)
@@ -72,10 +62,10 @@ sed -i s/"^LIBDIR = .*"/"LIBDIR = %{_lib}"/ Makefile
 %make_install
 chmod -x README %{buildroot}%{_includedir}/freeaptx.h
 
-%post -n libfreeaptx0 -p /sbin/ldconfig
-%postun -n libfreeaptx0 -p /sbin/ldconfig
+%post -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
 
-%files -n libfreeaptx0
+%files
 %{_libdir}/libfreeaptx.so.*
 
 %files devel
